@@ -1,0 +1,13 @@
+provincia,superficie_glaciar_descubierto_km2,superficie_glaciar_cubierto_km2,superficie_manchon_nieve_km2,superficie_glaciar_cubierto_glaciar_escombros_km2,superficie_glaciar_escombros_km2,unidad,glaciares_en_app,glaciares_en_apn,superficie_glaciares_en_ap,superficie_total_glaciar_por_provincia,porcentaje
+Jujuy,0,0,0.02,0,9.51,Km2,1.2,0,1.2,9.5,12
+Salta,0.25,0,1.27,0,29.45,Km2,3,0,3,31,9.67
+Tucuman,0,0,0.03,0,9.97,Km2,0.4,6.2,6.6,10,66
+Catamarca,26.259999999999998,0,25.01,0,13.62,Km2,0,0,0,64.9,0
+La Rioja,17.630000000000003,0,29.79,0,2.08,Km2,9.8,0,9.8,49.5,19
+San Juan,197.6,7.88,55,62,292.47,Km2,55.6,0,55.6,614,9.05
+Mendoza,527.01,178.36,37.67,211.56,284.59,Km2,1013.9,0,1013.9,1239.2,81
+Neuquén,26.439999999999998,5.1,13.26,2.06,4.43,Km2,31.1,11.6,42.7,51.3,83
+Rio Negro,26.19,1.13,5.27,0,0.35,Km2,7.5,22.3,29.8,32.9,90
+Chubut,178.22,3.93,41.4,0,0.14,Km2,55.8,64.7,120.5,223.7,53
+Santa Cruz,3262.34,78.72,54.91,2.7,22.07,Km2,348.2,3005.5,3353.7,3420.8,98
+"Tierra del Fuego,Antartida e Islas del Atlantico Sur",2658.14,42.68,28.69,0.07,6.91,Km2,0.8,8.5,9.3,21.2,43
