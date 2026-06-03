@@ -48,6 +48,15 @@ dataset_final <- df_tipo %>%
   mutate(provincia = coalesce(provincia_tipo, provincia_anp)) %>%
   select(provincia, everything(), -pcia_match, -provincia_tipo, -provincia_anp)
 
+dataset_final <- dataset_final %>%
+  mutate(
+    provincia = if_else(
+      str_detect(provincia, "Tierra del Fuego"),
+      "Tierra del Fuego, Antárt. e IAS",
+      provincia
+    )
+  )
+
 write_csv(dataset_final, "glaciares_consolidado.csv")
 view(dataset_final)
   
