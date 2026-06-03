@@ -161,4 +161,57 @@ ggplot(df_proteccion, aes(x = reorder(provincia, km2, sum), y = km2, fill = esta
   theme(legend.position = "bottom", legend.direction = "vertical")
 
 
+# ==============================================================================
+# SEGUNDA PARTE - ESTIMACIÓN INFERENCIAL
+# ==============================================================================
+library(dplyr)
+
+# A) formamos los grupos
+# Grupo 1: Glaciares descubiertos
+g1 <- df_analisis %>%
+  filter(tipo_glaciar == "Glaciar Descubierto")
+
+# Grupo 2: Glaciares cubiertos y de escombros
+g2 <- df_analisis %>%
+  filter(tipo_glaciar %in% c("Glaciar Cubierto", 
+                             "Glaciar Escombros", 
+                             "Glaciar Cubierto Glaciar Escombros"))
+
+# B) calculo de parametros muestrales
+# Parámetros del Grupo 1
+n1 <- nrow(g1)
+media1 <- mean(g1$superficie_km2, na.rm = TRUE)
+sd1 <- sd(g1$superficie_km2, na.rm = TRUE)
+
+# Parámetros del Grupo 2
+n2 <- nrow(g2)
+media2 <- mean(g2$superficie_km2, na.rm = TRUE)
+sd2 <- sd(g2$superficie_km2, na.rm = TRUE)
+
+cat("--- Resultados Grupo 1 ---\n", "n:", n1, " | Media:", media1, " | SD:", sd1, "\n")
+cat("--- Resultados Grupo 2 ---\n", "n:", n2, " | Media:", media2, " | SD:", sd2, "\n\n")
+
+# C) construccion de intervalos de confianza (95%)
+nivel_confianza <- 0.95
+alpha <- 1 - nivel_confianza
+
+# Intervalo para Grupo 1
+t_critico_1 <- qt(1 - alpha/2, df = n1 - 1)
+error_estandar_1 <- sd1 / sqrt(n1)
+margen_error_1 <- t_critico_1 * error_estandar_1
+lim_inf_1 <- media1 - margen_error_1
+lim_sup_1 <- media1 + margen_error_1
+
+# Intervalo para Grupo 2
+t_critico_2 <- qt(1 - alpha/2, df = n2 - 1)
+error_estandar_2 <- sd2 / sqrt(n2)
+margen_error_2 <- t_critico_2 * error_estandar_2
+lim_inf_2 <- media2 - margen_error_2
+lim_sup_2 <- media2 + margen_error_2
+
+cat("--- Intervalos de Confianza al 95% ---\n")
+cat("IC Grupo 1 (Descubiertos): [", round(lim_inf_1, 2), " ; ", round(lim_sup_1, 2), "]\n")
+cat("IC Grupo 2 (Cubiertos/Escombros): [", round(lim_inf_2, 2), " ; ", round(lim_sup_2, 2), "]\n")
+
+
 
